@@ -17,7 +17,7 @@ import { initializeSocket } from './sockets/socket';
 
 const app = express();
 const httpServer = createServer(app);
-const PORT = process.env.PORT || 5000;
+const PORT = Number(process.env.PORT) || 5000;
 
 // Initialize real-time Socket.IO mapping
 initializeSocket(httpServer);
@@ -103,7 +103,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 // 9. Startup Listener
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`========================================`);
   console.log(` CivicLink Backend Server Online        `);
   console.log(` Port: ${PORT}                          `);
